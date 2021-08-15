@@ -54,9 +54,7 @@
                       <div class="w-1-3">{{ subSystem.licenses }}</div>
                       <div class="w-1-3">{{ subSystem.expires }}</div>
                       <div class="w-1-3 flex justify-end">
-                        <button class="rounded bg-success text-white px-5 py-2 text-base h-auto mr-4">Add License
-                        </button>
-                        <button class="rounded bg-danger text-white px-5 py-2 text-base h-auto">Remove</button>
+                        <span class="cursor-pointer p-2">Download</span>
                       </div>
                     </div>
                   </div>
