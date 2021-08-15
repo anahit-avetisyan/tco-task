@@ -74,6 +74,7 @@ module.exports = {
             '1/2': '50%',
             '3/4': '75%',
             'full': '100%',
+            230:'14.375rem',
             screen: '100vh',
         },
         maxWidth: (theme) => ({

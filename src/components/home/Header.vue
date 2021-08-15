@@ -26,7 +26,9 @@ export default {
     },
     plans: {
       type: Array,
-      default: function () { return [] }
+      default: function () {
+        return []
+      }
     }
   }
 }

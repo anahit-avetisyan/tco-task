@@ -1,11 +1,11 @@
 <template>
   <div v-if="show" class="flex flex-col my-12">
     <p class="text-textColor mb-6">Add System</p>
-    <div class="w-full h-230 border-borderColor border-dashed border bg-dark flex z-1" @dragover="dragover"
+    <div class="w-full min-h-230 border-borderColor border-dashed border bg-dark flex z-1" @dragover="dragover"
          @drop="drop" @click="chooseFiles()">
-      <div class="flex p-3" v-if="preview_list.length">
+      <div class="flex p-3 flex-wrap" v-if="preview_list.length">
         <div v-for="(item, index) in preview_list" :key="index">
-          <div class="flex flex-col h-80 w-80 px-2 bg-secondary relative mr-2 ">
+          <div class="flex flex-col h-80 w-80 px-2 mt-2 bg-secondary relative mr-2 ">
             <div class="flex justify-end absolute -top-1 -right-1 cursor-pointer close"
                  @click.prevent="removeImage(item)">
               <Close/>
@@ -48,7 +48,7 @@ export default {
     return {
       accept: {
         types: ["image/png", "image/jpeg"],
-        size: 0
+        size: 5
       },
       preview_list: [],
       image_list: []
@@ -81,8 +81,9 @@ export default {
     },
     isValidFile(file) {
       let validType = this.accept.types.indexOf(file['type']) !== -1;
-      let size = parseInt(Math.floor(Math.log(file['size']) / Math.log(1024)), 10);
-      let validSize = this.accept.size <= (file['size'] / (1024 ** size)).toFixed(1) > 0;
+      let size = file['size'] / 1024;
+      let sizeInMb = Math.round(size / 1024);
+      let validSize = this.accept.size >= sizeInMb > 0;
       return validType && validSize;
     },
     removeImage(item) {
